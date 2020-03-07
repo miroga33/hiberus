@@ -42,7 +42,6 @@ export class LogInComponent implements OnInit {
           this.dialogRef.close(true);
         },
         (err) => {
-          console.log(err);
           this.dialog.open(DialogComponent, { data: { title: 'Error', success: false, content: err.error.message } });
         }
       )
