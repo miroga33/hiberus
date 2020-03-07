@@ -15,10 +15,7 @@ export class RegisterComponent implements OnInit {
   account_validation_messages = {
     username: [
       { type: "required", message: "Required" },
-      {
-        type: "minlength",
-        message: "Must contain at least 3 characters"
-      },
+      { type: "email", message: "Insert a valid email" },
       { type: "validUsername", message: "Your username has already been taken" }
     ],
     confirmPassword: [
@@ -44,13 +41,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      username: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(3),
-        ]
-      ],
+      username: ["", [Validators.required, Validators.email]],
       password: [
         "",
         [
@@ -116,9 +107,7 @@ export class RegisterComponent implements OnInit {
     for (const key in this.account_validation_messages) {
       for (const validation of this.account_validation_messages[key]) {
         if (this.f[key].hasError(validation.type)) {
-          console.log("Error en", key);
           this.errors[key] = validation.message;
-          console.log(this.errors);
         }
       }
     }

@@ -21,7 +21,6 @@ export class UsersComponent implements OnInit {
   getUsers() {
     this._users.getUsers().subscribe(
       (data: Array<User>) => {
-        console.log(data);
         this.users = data;
       },
       (err) => {
@@ -33,7 +32,6 @@ export class UsersComponent implements OnInit {
   delete(id: string) {
     const dialogRef = this.dialog.open(DialogComponent, { data: { title: 'Delete ', success: false, content: 'Are you sure?', action: 'question' } });
     dialogRef.afterClosed().subscribe((result: boolean) => {
-      console.log(typeof result);
       if (result) {
         this._users.delete(id).subscribe(
           (data: Array<User>) => {
