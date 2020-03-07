@@ -1,0 +1,19 @@
+<div class="containerLogin">
+    <h2 class="mb-4">LogIn</h2>
+    <hr>
+    <div class="example-container mb-4">
+        <mat-form-field class="mt-4 mr-2" appearance="fill">
+            <mat-label>Enter your UserName</mat-label>
+            <input matInput [formControl]="username" required>
+            <mat-error *ngIf="username.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field class="ml-2" appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [formControl]="password" required>
+            <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="text-center mt-4 mb-2">
+        <button class="btn btn-success text-center m" (click)="logIn()">Enter</button>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="pt-5 pb-5 mr-2 ml-2">
+    <h2 mat-dialog-tittle [ngClass]="data.success ? 'text-success': 'text-danger'">{{data.title}} </h2>
+    <hr class=" m-3 ">
+    <mat-dialog-content class="mt-3 mb-3">{{data.content}}</mat-dialog-content>
+    <mat-dialog-actions class="button" *ngIf="data.action === undefined">
+        <button class="btn btn-primary mt-5" mat-button mat-dialog-close color="primary">Continue</button>
+    </mat-dialog-actions>
+    <mat-dialog-actions class="button" *ngIf="data.action === 'question'">
+        <button class="btn btn-primary btn-lg mt-5 mr-3" mat-dialog-close [mat-dialog-close]="false" color="primary">No</button>
+        <button class="btn btn-primary btn-lg mt-5 ml-3 text-danger" mat-dialog-close [mat-dialog-close]="true">Yes</button>
+    </mat-dialog-actions>
+
+</div>

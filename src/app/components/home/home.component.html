@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <h1 class="display-3 text-center">Welcome to my page <strong class="text-warning" *ngIf="_auth.loggedIn()">{{_auth.getUser().username}}</strong>!</h1>
+    <p class="lead text-center">Technical test, developed by Miguel Rodríguez García</p>
+    <hr class="my-4">
+    <p class="lead text-center d-flex justify-content-around" *ngIf="!_auth.loggedIn()">
+        <button class="btn btn-primary btn-lg btn-info" role="button" [routerLink]="['/register']">Sign In</button>
+        <button class="btn btn-primary btn-lg btn-success" role="button" (click)="logIn()">Log In</button>
+    </p>
+</div>
