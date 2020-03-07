@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { LogInComponent } from '../../components/log-in/log-in.component';
 import { AuthenticationService } from '../../core/authentication/authentication.service';
 import { Router } from '@angular/router';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -25,7 +26,12 @@ export class HeaderComponent implements OnInit {
     })
   }
   logOut() {
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('/home');
+    const dialogRef = this.dialog.open(DialogComponent, { data: { title: 'LogOut ', success: false, content: 'Are you sure?', action: 'question' } });
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        localStorage.removeItem('token');
+        this.router.navigateByUrl('/home');
+      }
+    })
   }
 }

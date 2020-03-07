@@ -37,14 +37,13 @@ export class LogInComponent implements OnInit {
     if (this.formValid()) {
       this._auth.logIn(authLoginDto).subscribe(
         (token: Token) => {
-          console.log(token);
           localStorage.setItem('token', JSON.stringify(token));
           this.router.navigateByUrl('/home');
           this.dialogRef.close(true);
         },
         (err) => {
           console.log(err);
-          this.dialog.open(DialogComponent, { data: { title: 'Error', success: "false", content: err.error.message } });
+          this.dialog.open(DialogComponent, { data: { title: 'Error', success: false, content: err.error.message } });
         }
       )
     }
